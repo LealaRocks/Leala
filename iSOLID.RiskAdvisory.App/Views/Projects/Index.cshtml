@@ -1,0 +1,67 @@
+
+@{
+    ViewData["Title"] = "Projects";
+}
+
+<style type="text/css">
+    .leala-cloak {
+        display: none;
+    }
+</style>
+
+<div class="row">
+    <div class="col-lg-9">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <table class="table table-bordered table-striped table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: projects">
+                        <tr>
+                            <td>
+                                <a href="#" data-bind="text: name, attr: { href: '/Project/' + id() + '/Details' }"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+
+    <script src="@Url.Action("ResourceUrls", "Scripts")"></script>
+    <script src="~/js/services/resource.js"></script>
+    <script src="~/js/services/router.js"></script>
+
+    <script src="~/js/models/client.js"></script>
+    <script src="~/js/models/user.js"></script>
+    <script src="~/js/models/jobType.js"></script>
+    <script src="~/js/models/project.js"></script>
+
+    <script type="text/javascript">
+
+        var viewModel = function () {
+            var self = this;
+
+            self.projectsLoaded = ko.observable(false);
+            self.projects = ko.observableArray();
+            self.projectsResource = new leala.services.resource(leala.apiUrls.projects, leala.models.project);
+            self.projectsResource.get().done(function (r) {
+                self.projects(r);
+                self.projectsLoaded(true);
+            });
+        };
+
+
+        ko.applyBindings(new viewModel());
+
+
+    </script>
+}

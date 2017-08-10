@@ -1,0 +1,53 @@
+<h2>Projects</h2>
+
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#leala-newProject-modal" title="Add Project">
+    <span class="glyphicon glyphicon-file"></span> New
+</button>
+
+<!-- New Project Modal -->
+<div class="modal fade" id="leala-newProject-modal" tabindex="-1" role="dialog" aria-labelledby="leala-newProject-modalLabel" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <form data-bind="submit: saveNewProject">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="leala-newProject-modalLabel">New Project</h4>
+                </div>
+                <div class="modal-body" data-bind="with: newProject">
+                    <div class="container-fluid">
+                        <div class="form-horizontal">
+                            <div class="form-group" data-bind="validationElement: clientId">
+                                <label class="col-sm-3 control-label">Client</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" required data-bind="value: clientId, options: $root.clients, optionsText: 'name', optionsValue: 'id', optionsCaption: '--Select--'"></select>
+                                </div>
+                            </div>
+                            <div class="form-group" data-bind="validationElement: clientId">
+                                <label class="col-sm-3 control-label">Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="Project Name" required autocomplete="off" data-bind="value: name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Type</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" required data-bind="value: typeId, options: $root.jobTypes, optionsText: 'name', optionsValue: 'id', optionsCaption: '--Select--'"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Status</label>
+                                <div class="col-sm-9">
+                                    <p class="form-control-static" data-bind="text: status"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

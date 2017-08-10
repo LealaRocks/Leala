@@ -1,0 +1,205 @@
+@{
+    ViewData["Title"] = "Administration";
+}
+<style type="text/css">
+    .leala-cloak { display: none; }
+</style>
+
+
+@section SideBarLinks
+{
+<!-- ko with: router -->
+<li role="presentation" class="leala-cloak" data-bind="css: { 'landing_link': page() == '/Admin/Clients' }">
+    <a href="/Admin/Clients"  data-bind="click: navigateSection"><i class="fa fa-address-book-o"></i> <span class="nav-label">Clients</span></a>
+</li>
+<li role="presentation" class="leala-cloak" data-bind="css: { 'landing_link': page() == '/Admin/Projects' }">
+    <a href="/Admin/Projects" data-bind="click: navigateSection"><i class="fa fa-cogs"></i> <span class="nav-label">Projects</span></a>
+</li>
+<li role="presentation" class="leala-cloak" data-bind="css: { 'landing_link': page() == '/Admin/Users' }">
+    <a href="/Admin/Users" data-bind="click: navigateSection"><i class="fa fa-user-circle-o"></i> <span class="nav-label">Users</span></a>
+</li>
+<li role="presentation" class="leala-cloak" data-bind="css: { 'landing_link': page() == '/Admin/JobTypes' }">
+    <a href="/Admin/JobTypes" data-bind="click: navigateSection"><i class="fa fa-tags"></i> <span class="nav-label">Project Types</span></a>
+</li>
+<!-- /ko -->
+}
+<div class="row">
+    <div class="col-lg-9 leala-cloak">
+        <!-- ko if: router.page() == '/Admin/Clients' && clientsLoaded() -->
+        @{Html.RenderPartial("Clients");}
+        <!-- /ko -->
+        <!-- ko if: router.page() == '/Admin/Projects' -->
+        @{Html.RenderPartial("Projects");}
+        <!-- /ko -->
+        <!-- ko if: router.page() == '/Admin/Users' && usersLoaded() -->
+        @{Html.RenderPartial("Users");}
+        <!-- /ko -->
+        <!-- ko if: router.page() == '/Admin/JobTypes' && jobTypesLoaded() -->
+        @{Html.RenderPartial("JobTypes");}
+        <!-- /ko -->
+    </div>
+</div>
+
+
+@section Scripts {
+
+    <script src="@Url.Action("ResourceUrls", "Scripts")"></script>
+    <script src="~/js/services/resource.js"></script>
+    <script src="~/js/services/router.js"></script>
+
+    <script src="~/js/models/client.js"></script>
+    <script src="~/js/models/user.js"></script>
+    <script src="~/js/models/jobType.js"></script>
+    <script src="~/js/models/project.js"></script>
+
+    <script type="text/javascript">
+
+        var model = function (initialView) {
+
+            var self = this;
+
+
+            // Clients
+            self.clientsLoaded = ko.observable(false);
+            self.clients = ko.observableArray();
+            self.newClient = ko.observable(new leala.models.client());
+            self.clientResource = new leala.services.resource(leala.apiUrls.clients, leala.models.client);
+            self.clientResource.get().done(function (r) {
+                self.clients(r);
+                self.clientsLoaded(true);
+            });
+            self.saveNewClient = function () {
+                self.clientResource.save(self.newClient()).done(function (client) {
+                    self.newClient(new leala.models.client());
+                    self.clients.push(client);
+                    $('#leala-newclient-modal').modal('hide');
+                });
+            };
+
+            // Jobs
+            self.projectsLoaded = ko.observable(false);
+            self.projects = ko.observableArray();
+            self.newProject = ko.observable(new leala.models.project());
+            self.projectsResource = new leala.services.resource(leala.apiUrls.projects, leala.models.project);
+            self.projectsResource.get().done(function (r) {
+                self.projects(r);
+                self.projectsLoaded(true);
+            });
+            self.saveNewProject = function () {
+                var newProject = self.newProject();
+                self.projectsResource.save(newProject).done(function () {
+                    $('#leala-newProject-modal').modal('hide');
+                    window.location.href = '../Project/' + newProject.id() + '/Configuration';
+                });
+            };
+
+            //Users
+            self.usersLoaded = ko.observable(false);
+            self.users = ko.observableArray();
+            self.usersResource = new leala.services.resource(leala.apiUrls.users, leala.models.user);
+            self.usersResource.get().done(function (r) {
+                self.users(r);
+                self.usersLoaded(true);
+            });
+            self.editingUser = ko.observable();
+            self.isEditingUser = ko.computed(function () {
+                return self.editingUser();
+            });
+            self.addUser = function () {
+                var newUser = new leala.models.user();
+                self.newUser(newUser);
+            };
+            self.newUser = ko.observable();
+            self.password = ko.observable();
+            self.confirmPassword = ko.observable();
+            self.editUser = function (u) {
+                self.editingUser(u);
+            };
+            self.saveUser = function () {
+                self.usersResource.save(self.editingUser()).done(function () {
+                    self.editingUser(null);
+                });
+            };
+            self.cancelEditingUser = function () {
+                self.editingUser(null);
+            };
+            self.saveNewUser = function () {
+                alert('new user');
+            };
+            self.resetPassword = {
+                password: ko.observable().extend({ required: true, maxLength: 50 }),
+                confirmPassword: ko.observable().extend({ required: true, maxLength: 50 }),
+                userId: null,
+                openModal: function (u) {
+                    self.resetPassword.userId = u.id();
+                    self.resetPassword.password(null);
+                    self.resetPassword.confirmPassword(null);
+                    self.resetPassword.password.clearError();
+                    self.resetPassword.confirmPassword.clearError();
+                    $('#leala-resetPassword-modal').modal('show');
+                },
+                reset: function () {
+                    var patch = {
+                        password: this.password,
+                        confirmPassword: this.confirmPassword,
+                        userId: this.userId
+                    };
+
+                    leala.ajax.patch(leala.apiUrls.users + '/' + patch.userId, ko.toJSON(patch)).done(function () {
+                        toastr["success"]('Password Reset');
+                        $('#leala-resetPassword-modal').modal('hide');
+                    });
+                }
+            };
+
+            // Job Types
+            self.jobTypesLoaded = ko.observable(false);
+            self.jobTypes = ko.observableArray();
+            self.jobTypeResource = new leala.services.resource(leala.apiUrls.jobTypes, leala.models.jobType);
+            self.jobTypeResource.get().done(function (r) {
+                self.jobTypes(r);
+                self.jobTypesLoaded(true);
+            });
+
+            self.editingJobType = ko.observable();
+            self.isEditingJobType = ko.computed(function () {
+                return self.editingJobType();
+            });
+            self.addJobType = function () {
+                var jobType = new leala.models.jobType();
+                self.jobTypes.push(jobType);
+                self.editingJobType(jobType);
+            };
+            self.editJobType = function (jobType) {
+                self.editingJobType(jobType);
+            };
+            self.saveJobType = function () {
+                var jobType = self.editingJobType();
+
+                self.jobTypeResource.save(jobType).done(function () { 
+                    self.editingJobType(null);
+                    self.jobTypes.sort(leala.models.jobTypeComparer);
+                });
+            };
+            self.cancelEditingJobType = function () {
+                if (self.editingJobType().id()) {
+                    self.editingJobType().undoChanges();
+                    self.editingJobType(null);
+                }
+                else {
+                    self.jobTypes.remove(self.editingJobType());
+                    self.editingJobType(null);
+                }
+            };  
+
+            self.router = new leala.services.router(initialView);
+        }
+
+        var viewModel = new model('@ViewBag.DefaultView');
+
+        ko.applyBindings(viewModel);
+
+
+        $('.leala-cloak').show();
+    </script>
+}

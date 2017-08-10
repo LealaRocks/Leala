@@ -1,0 +1,80 @@
+﻿@model iSOLID.RiskAdvisory.App.ViewModels.LoginViewModel
+
+@{
+    Layout = "";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>L&#201;ALA+ | Login</title>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/css/animate.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+
+</head>
+
+<body class="gray-bg">
+
+
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div>
+
+                <h1 class="logo-name">L+</h1>
+
+            </div>
+            <h3>Welcome to L&#201;ALA+</h3>
+
+            <p>Login in. To see it in action.</p>
+            <form class="m-t" role="form" method="post" data-bind="submit: submit, with: model">
+                <div class="form-group" data-bind="validationElement: email">
+                    <input type="email" name="Email" class="form-control" placeholder="Email" required value="@Model.Email" data-bind="textInput: email">
+                </div>
+                <div class="form-group" data-bind="validationElement: password">
+                    <input type="password" name="Password" class="form-control" placeholder="Password" required value="@Model.Password" data-bind="textInput: password">
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label><input name="RememberMe" type="checkbox" /> Remember Me </label>
+                    </div>
+                    
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b" data-bind="enable: isValid">Login</button>
+
+                <a href="#"><small>Forgot password?</small></a>
+                <p class="text-muted text-center"><small>Do not have an account?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="@Url.Action("Register")">Create an account</a>
+            </form>
+            <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
+        </div>
+    </div>
+
+
+
+    <!-- Mainly scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="~/lib/knockout/dist/knockout.js"></script>
+    <script src="~/lib/knockout-validation/dist/knockout.validation.js"></script>
+
+    <!-- iCheck -->
+    <script src="~/lib/iCheck/icheck.min.js"></script>
+
+    <script src="~/js/site.js"></script>
+
+    <script src="~/js/models/login.js"></script>
+    <script src="~/js/viewModels/loginViewModel.js"></script>
+
+</body>
+
+</html>

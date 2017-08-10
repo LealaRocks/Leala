@@ -1,0 +1,42 @@
+<div class="btn-group">
+    <button type="button" class="btn btn-default" data-bind="click: addJobType, disable: isEditingJobType" title="Add Job Type">
+        <span class="glyphicon glyphicon-file"></span> New
+    </button>
+    <button type="button" class="btn btn-default" data-bind="click: saveJobType, enable: isEditingJobType" title="Save Changes">
+        <span class="glyphicon glyphicon-ok"></span> Save
+    </button>
+    <button type="button" class="btn btn-default" data-bind="click: cancelEditingJobType, enable: isEditingJobType" title="Cancel">
+        <span class="glyphicon glyphicon-remove"></span> Cancel
+    </button>
+</div>
+
+<table class="table table-bordered table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: { data: jobTypes, as: 'jobType' }">
+        <tr>
+            <!-- ko if: $root.editingJobType() == jobType -->
+            <td>
+                
+                <div class="input-group" data-bind="validationElement: jobType.name">
+                    <input type="text" required maxlength="50" data-bind="value: jobType.name" class="form-control" />
+                </div>
+            </td>
+            <!-- /ko -->
+            <!-- ko ifnot: $root.editingJobType() == jobType -->
+            <td>
+                <div class="input-group">
+                    <small><button class="btn-link" data-bind="click: $root.editJobType, disable: $root.isEditingJobType">edit</button></small>
+                    <span data-bind="text: jobType.name"></span>
+                </div>
+
+                @*<small></small>
+                <span data-bind="text: jobType.name"></span>*@
+            </td>
+            <!-- /ko -->
+        </tr>
+    </tbody>
+</table>

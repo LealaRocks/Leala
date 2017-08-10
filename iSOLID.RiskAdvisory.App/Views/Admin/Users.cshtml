@@ -1,0 +1,157 @@
+<div class="btn-group">
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#leala-newUser-modal" data-bind="click: addUser, disable: isEditingUser" title="Add User">
+        <span class="glyphicon glyphicon-file"></span> New
+    </button>
+    <button type="button" class="btn btn-default" data-bind="click: saveUser, enable: isEditingUser" title="Save Changes">
+        <span class="glyphicon glyphicon-ok"></span> Save
+    </button>
+    <button type="button" class="btn btn-default" data-bind="click: cancelEditingUser, enable: isEditingUser" title="Cancel">
+        <span class="glyphicon glyphicon-remove"></span> Cancel
+    </button>
+</div>
+
+<div class="ibox">
+    <div class="ibox-title">
+        <h5>Users</h5>
+        <div class="ibox-tools">
+            <button class="btn-link"><i class="fa fa-file-o"></i></button>
+            <button class="btn-link"><i class="fa fa-edit"></i></button>
+            <button class="btn-link"><i class="fa fa-undo"></i></button>
+        </div>
+    </div>
+    <div class="ibox-content">
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th colspan="2">Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: { data: users, as: 'user' }">
+                <tr>
+                    <!-- ko if: $root.editingUser() == user -->
+                    <td>
+                        <small><button class="btn-link" data-bind="click: $root.saveUser">save</button></small>|<small><button class="btn-link" data-bind="click: $root.cancelEditingUser">cancel</button></small>
+                    </td>
+                    <td>
+                        <div class="form-group" data-bind="validationElement: user.firstName">
+                            <input type="text" required maxlength="50" data-bind="value: user.firstName" class="form-control" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group" data-bind="validationElement: user.lastName">
+                            <input type="text" required maxlength="50" data-bind="value: user.lastName" class="form-control" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group" data-bind="validationElement: user.email">
+                            <input type="email" required maxlength="50" data-bind="value: user.email" class="form-control" />
+                        </div>
+                    </td>
+                    <!-- /ko -->
+                    <!-- ko ifnot: $root.editingUser() == user -->
+                    <td>
+                        <small><button class="btn-link" data-bind="click: $root.editUser, disable: $root.isEditingUser">edit</button></small>|<small><button class="btn-link" data-bind="click: $root.resetPassword.openModal, disable: $root.isEditingUser">reset password</button></small>
+                    </td>
+                    <td colspan="2" data-bind="text: user.fullName"></td>
+                    <td data-bind="text: email"></td>
+                    <!-- /ko -->
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+
+<!-- New User Modal -->
+<div class="modal fade" id="leala-newUser-modal" tabindex="-1" role="dialog" aria-labelledby="leala-newUser-modalLabel" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <form data-bind="submit: saveNewUser">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="leala-newUser-modalLabel">New User</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="form-horizontal" data-bind="with: newUser">
+                            <div class="form-group" data-bind="validationElement: firstName">
+                                <label class="col-sm-3 control-label">First Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="First Name" required data-bind="value: firstName" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" data-bind="validationElement: lastName">
+                                <label class="col-sm-3 control-label">Last Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" placeholder="Last Name" required data-bind="value: lastName" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" data-bind="validationElement: email">
+                                <label class="col-sm-3 control-label">Email</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" placeholder="Email" required data-bind="value: email" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" data-bind="validationElement: password">
+                                <label class="col-sm-3 control-label">Password</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" placeholder="Password" required data-bind="value: password" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group" data-bind="validationElement: confirmPassword">
+                                <label class="col-sm-3 control-label">Confirm Password</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" placeholder="Confirm Password" required data-bind="value: confirmPassword" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Reset Password Modal -->
+<div class="modal fade" id="leala-resetPassword-modal" tabindex="-1" role="dialog" aria-labelledby="leala-resetPassword-modalLabel" data-backdrop="static">
+    <div class="modal-dialog" role="document" data-bind="with: resetPassword">
+        <form data-bind="submit: reset">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="leala-resetPassword-modalLabel">Reset Password</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="form-horizontal">
+                            <div class="form-group" data-bind="validationElement: password" >
+                                <label class="col-sm-3 control-label">Password</label>
+                                <div class="col-sm-9">
+                                    <input type="password" maxlength="50" class="form-control" placeholder="Password" required autocomplete="off" data-bind="value: password">
+                                </div>
+                            </div>
+                            <div class="form-group" data-bind="validationElement: confirmPassword">
+                                <label class="col-sm-3 control-label">Confirm Password</label>
+                                <div class="col-sm-9">
+                                    <input type="password" maxlength="50" class="form-control" placeholder="Confirm Password" required autocomplete="off" data-bind="value: confirmPassword">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

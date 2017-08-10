@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>L&#201;ALA+ | @ViewBag.Title</title>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/lib/toastr/toastr.min.css" rel="stylesheet" />
+    <link href="~/lib/morrisjs/morris.css" rel="stylesheet" />
+    <link href="~/css/animate.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+
+
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
+                                <span class="clear">
+                                    <span class="block m-t-xs">
+                                        <strong class="font-bold">
+                                            @User.FindFirst(System.Security.Claims.ClaimTypes.Name).Value @User.FindFirst(System.Security.Claims.ClaimTypes.Surname).Value 
+                                        </strong>
+                                    </span>
+                                    <span class="text-muted text-xs block">@User.FindFirst(System.Security.Claims.ClaimTypes.Email).Value <b class="caret"></b></span>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="mailbox.html">Mailbox</a></li>
+                                <li class="divider"></li>
+                                <li><a href="login.html">Logout</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            L+
+                        </div>
+                    </li>
+
+                    @RenderSection("SideBarLinks", false)
+
+
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                        @*<form role="search" class="navbar-form-custom" action="search_results.html">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                                </div>
+                            </form>*@
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <span class="m-r-sm text-muted welcome-message">Welcome to L&#201;ALA+.</span>
+                        </li>
+                        <li>
+                            <a href="login.html">
+                                <i class="fa fa-sign-out"></i> Log out
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </nav>
+            </div>
+
+            <div class="row border-bottom white-bg dashboard-header">
+                <div class="col-md-3">
+                    <h2>@ViewBag.Title</h2>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="wrapper wrapper-content">
+                   
+                    <div class="row">
+                        <div class="col-lg-12">
+                            @RenderBody()
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div>
+                            <strong>Copyright</strong> iSOLID © 2017
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="~/lib/slimScroll/jquery.slimscroll.min.js"></script>
+
+    <script src="~/lib/flot/jquery.flot.js"></script>
+    <script src="~/lib/flot.tooltip/js/jquery.flot.tooltip.js"></script>
+    <script src="~/lib/jquery.flot.spline/jquery.flot.spline.js"></script>
+    <script src="~/lib/flot/jquery.flot.resize.js"></script>
+    <script src="~/lib/flot/jquery.flot.pie.js"></script>
+    <script src="~/lib/flot/jquery.flot.symbol.js"></script>
+    <script src="~/lib/curvedlines/curvedLines.js"></script>
+
+    <script src="~/lib/peity/jquery.peity.min.js"></script>
+
+    <script src="~/js/inspinia.js"></script>
+    <script src="~/lib/pace/pace.min.js"></script>
+
+    <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
+
+    <script src="~/lib/jvectormap-2.0.2/dist/js/jquery-jvectormap-2.0.2.min.js"></script>
+
+    <script src="~/lib/jquery-sparkline/dist/jquery.sparkline.js"></script>
+    <script src="~/lib/chartjs/dist/Chart.js"></script>
+
+    <script src="~/lib/knockout/dist/knockout.js"></script>
+    <script src="~/lib/knockout-validation/dist/knockout.validation.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+
+    <script src="~/js/site.js"></script>
+    @RenderSection("Scripts", false)
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

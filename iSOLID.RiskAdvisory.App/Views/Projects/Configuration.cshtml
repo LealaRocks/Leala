@@ -1,0 +1,124 @@
+
+@{
+    ViewData["Title"] = ViewBag.ProjectName + ": Configuration";
+}
+
+@section SideBarLinks{
+
+<li role="presentation">
+    <a href="./Details"><i class="fa fa-cogs"></i> <span class="nav-label">Artifact List</span></a>
+</li>
+
+<li role="presentation">
+    <a href="./Details"><i class="fa fa-cogs"></i> <span class="nav-label">Exceptions</span></a>
+</li>
+
+<li role="presentation">
+    <a href="./Details"><i class="fa fa-cogs"></i> <span class="nav-label">Questions</span></a>
+</li>
+
+<li role="presentation">
+    <a href="./Details"><i class="fa fa-cogs"></i> <span class="nav-label">Grades</span></a>
+</li>
+
+<li role="presentation">
+    <a href="./Details"><i class="fa fa-cogs"></i> <span class="nav-label">Users</span></a>
+</li>
+
+}
+
+
+<form data-bind="if: initialized">
+    <div class="row" id="leala-project-details">
+        <div class="col-lg-9">
+            <div class="ibox float-e-margins" data-bind="with: project">
+                <div class="ibox-title">
+                    <h5>Details</h5>
+                </div>
+                <div class="ibox-content form-horizontal">
+                    <div class="form-group" data-bind="validationElement: clientId">
+                        <label class="col-sm-3 control-label">Client</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" required data-bind="value: clientId, options: $root.clients, optionsText: 'name', optionsValue: 'id', optionsCaption: '--Select--'"></select>
+                        </div>
+                    </div>
+                    <div class="form-group" data-bind="validationElement: name">
+                        <label class="col-sm-3 control-label">Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" data-bind="textInput: name" required placeholder="Name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Type</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" required data-bind="value: typeId, options: $root.jobTypes, optionsText: 'name', optionsValue: 'id', optionsCaption: '--Select--'"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Status</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static" data-bind="text: status"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    <script src="@Url.Action("ResourceUrls", "Scripts")"></script>
+    <script src="~/js/services/resource.js"></script>
+    <script src="~/js/services/router.js"></script>
+    <script src="~/js/models/client.js"></script>
+    <script src="~/js/models/user.js"></script>
+    <script src="~/js/models/jobType.js"></script>
+    <script src="~/js/models/project.js"></script>
+
+    <script type="text/javascript">
+        var viewModel = function (projectId) {
+            var self = this;
+
+            //clients
+            self.clients = ko.observableArray();
+            self.clientsLoaded = ko.observable(false);
+            self.clientsResource = new leala.services.resource(leala.apiUrls.clients, leala.models.client);
+            self.clientsResource.get().done(function (r) {
+                self.clients(r);
+                self.clientsLoaded(true);
+            });
+
+            //project
+            self.project = ko.observable();
+            self.projectLoaded = ko.observable(false)
+            self.projectsResource = new leala.services.resource(leala.apiUrls.projects, leala.models.project);
+            self.projectsResource.get(projectId).done(function (r) {
+                self.project(r);
+                self.projectLoaded(true);
+            });
+
+            //job types
+            self.jobTypesLoaded = ko.observable(false);
+            self.jobTypes = ko.observableArray();
+            self.jobTypeResource = new leala.services.resource(leala.apiUrls.jobTypes, leala.models.jobType);
+            self.jobTypeResource.get().done(function (r) {
+                self.jobTypes(r);
+                self.jobTypesLoaded(true);
+            });
+
+            self.initialized = ko.pureComputed(function () {
+                return self.projectLoaded()
+                    && self.clientsLoaded()
+                    && self.jobTypesLoaded();
+            });
+        };
+
+        var model = new viewModel('@ViewBag.ProjectId');
+        ko.applyBindings(model);
+
+        $('.leala-cloak').show();
+
+    </script>
+}
+
