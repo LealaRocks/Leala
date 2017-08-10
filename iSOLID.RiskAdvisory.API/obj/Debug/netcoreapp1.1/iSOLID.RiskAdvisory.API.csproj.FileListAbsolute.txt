@@ -1,0 +1,55 @@
+C:\Users\Mike\documents\visual studio 2017\Projects\iSOLID.RiskAdvisory\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.deps.json
+C:\Users\Mike\documents\visual studio 2017\Projects\iSOLID.RiskAdvisory\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.runtimeconfig.json
+C:\Users\Mike\documents\visual studio 2017\Projects\iSOLID.RiskAdvisory\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.runtimeconfig.dev.json
+C:\Users\Mike\documents\visual studio 2017\Projects\iSOLID.RiskAdvisory\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.dll
+C:\Users\Mike\documents\visual studio 2017\Projects\iSOLID.RiskAdvisory\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.pdb
+C:\Users\Mike\documents\visual studio 2017\Projects\iSOLID.RiskAdvisory\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.csprojResolveAssemblyReference.cache
+C:\Users\Mike\documents\visual studio 2017\Projects\iSOLID.RiskAdvisory\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.AssemblyInfo.cs
+C:\Users\Mike\documents\visual studio 2017\Projects\iSOLID.RiskAdvisory\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.dll
+C:\Users\Mike\documents\visual studio 2017\Projects\iSOLID.RiskAdvisory\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.pdb
+C:\Users\Mike\documents\visual studio 2017\Projects\iSOLID.RiskAdvisory\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.Domain.dll
+C:\Users\Mike\documents\visual studio 2017\Projects\iSOLID.RiskAdvisory\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.Domain.pdb
+C:\Users\Mike\OneDrive\Projects\Leala 2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.deps.json
+C:\Users\Mike\OneDrive\Projects\Leala 2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.runtimeconfig.json
+C:\Users\Mike\OneDrive\Projects\Leala 2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.runtimeconfig.dev.json
+C:\Users\Mike\OneDrive\Projects\Leala 2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.dll
+C:\Users\Mike\OneDrive\Projects\Leala 2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.pdb
+C:\Users\Mike\OneDrive\Projects\Leala 2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.Domain.dll
+C:\Users\Mike\OneDrive\Projects\Leala 2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.Domain.pdb
+C:\Users\Mike\OneDrive\Projects\Leala 2\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.csprojResolveAssemblyReference.cache
+C:\Users\Mike\OneDrive\Projects\Leala 2\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.AssemblyInfo.cs
+C:\Users\Mike\OneDrive\Projects\Leala 2\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.dll
+C:\Users\Mike\OneDrive\Projects\Leala 2\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.pdb
+C:\Temp\App\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.deps.json
+C:\Temp\App\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.runtimeconfig.json
+C:\Temp\App\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.runtimeconfig.dev.json
+C:\Temp\App\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.dll
+C:\Temp\App\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.pdb
+C:\Temp\App\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.Domain.dll
+C:\Temp\App\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.Domain.pdb
+C:\Temp\App\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.csprojResolveAssemblyReference.cache
+C:\Temp\App\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.AssemblyInfo.cs
+C:\Temp\App\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.dll
+C:\Temp\App\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.pdb
+C:\Mongo\App V2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.deps.json
+C:\Mongo\App V2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.runtimeconfig.json
+C:\Mongo\App V2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.runtimeconfig.dev.json
+C:\Mongo\App V2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.dll
+C:\Mongo\App V2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.pdb
+C:\Mongo\App V2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.Domain.dll
+C:\Mongo\App V2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.Domain.pdb
+C:\Mongo\App V2\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.csprojResolveAssemblyReference.cache
+C:\Mongo\App V2\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.AssemblyInfo.cs
+C:\Mongo\App V2\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.dll
+C:\Mongo\App V2\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.pdb
+C:\iSOLID\All\App V2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.deps.json
+C:\iSOLID\All\App V2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.runtimeconfig.json
+C:\iSOLID\All\App V2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.runtimeconfig.dev.json
+C:\iSOLID\All\App V2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.dll
+C:\iSOLID\All\App V2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.pdb
+C:\iSOLID\All\App V2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.Domain.dll
+C:\iSOLID\All\App V2\iSOLID.RiskAdvisory.API\bin\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.Domain.pdb
+C:\iSOLID\All\App V2\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.csprojResolveAssemblyReference.cache
+C:\iSOLID\All\App V2\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.AssemblyInfo.cs
+C:\iSOLID\All\App V2\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.dll
+C:\iSOLID\All\App V2\iSOLID.RiskAdvisory.API\obj\Debug\netcoreapp1.1\iSOLID.RiskAdvisory.API.pdb
